@@ -31,11 +31,12 @@ $H_0$ There is no difference in the attitude on capital punishment depending on 
 $h_0$ There is a difference in attitude on capital punishment depending on race. 
 
 Data comes from the GSS university of Chicago, 2016 survey   
-cappun~race  
-this is a categorical ~ categorical   
+cappun~race     
+this is a categorical ~ categorical 
+we use helper file cat~cat     
 
-Is attitude toward capitol punishment (cappun) independent of race (race)?
-If not, then whose view differs from whom??
+Is attitude toward capitol punishment (cappun) independent of race (race)?   
+If not, then whose view differs from whom?  
 
 # Methods
 
@@ -51,6 +52,11 @@ If not, then whose view differs from whom??
 
 <!--Graphical results here.  Make sure to show your code.  Provide appropriate labels for axes, giving units if possible, and provide a good title for the graph, too.  Use the graphical results to describe the patterns if any that exist in the data as focused toward the research question. Bottom line is to explain the features of the graph that are relevant to conforming or departing to what is expected by your null hypothesis !-->
 
+```{r}
+barchartGC(~race + cappun,data=mydata)
+barchartGC(~race + cappun,data=mydata, type="percent")
+```
+
 
 The graph shows that more white people are in favor of capitol punishment.
 
@@ -62,8 +68,13 @@ The graph shows that more white people are in favor of capitol punishment.
 
 <!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
 
+```{r}
+table1 <- xtabs(~race + cappun, data=mydata)
+rowPerc(table1)
+colPerc(table1)
+```
 
-
+The numerical result shows that 65.10% of white people favor capital punishment while 34.90% oppose it. 42.63% of black people favor capital punishment while 57.37 oppose it. 55.20% of other races favor capital punishment while 44.80% oppose it. This means between the races white people favor capital punishment more than the other races, black people oppose capital punishment more than the other races, while other races average in attitude towards capital punishment white and black people. 
 
 ## Now with More data
 
